@@ -8,7 +8,7 @@ info:
     runt runtexterna, bärarobjekt samt kopplad information hämtas via K-samsök.
   contact:
     url: https://www.raa.se/kulturarv/runor-och-runstenar/projektet-evighetsrunor/
-  version: 0.9.20
+  version: 0.9.21
 servers:
   - description: Uppsala Universitet Evighetsrunor API
     url: http://runor.test.uu.se/rest/
@@ -425,7 +425,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/RunicInscriptionIndex'
+                  $ref: '#/components/schemas/SearchResultSummary'
         400:
           description: (Bad request). Felaktigt indata angavs till tjänsten (typiskt valideringsfel).
           content:
@@ -457,7 +457,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SearchPostResults'
+                $ref: '#/components/schemas/SearchResultSummary'
         400:
           description: (Bad request). Felaktigt indata angavs till tjänsten (typiskt valideringsfel).
           content:
@@ -1630,8 +1630,8 @@ components:
         language:
           $ref: '#/components/schemas/ModernLanguage'
 
-    SearchPostResults:
-      description: Det totala resultatet av en avancerad sökning.
+    SearchResultSummary:
+      description: Det totala resultatet av en sökning.
       properties:
         number_of_inscriptions:
           description: Antalet resultat som returneras.
@@ -1643,8 +1643,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SearchResult'
-
-
 
     SearchResult:
       description: Ett av flera resultat av en sökfråga.
